@@ -19,7 +19,6 @@ Airplane.prototype.land = function () {
   this.isFlying = false;
 };
 
-
 /*
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -39,15 +38,46 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-  
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
 
+Person.prototype.eat = function (edible) {
+  if (this.stomach.length < 10) {
+    this.stomach.push(edible);
+  }
+};
 
+Person.prototype.poop = function () {
+  this.stomach = [];
+};
 
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`;
+};
 
+const james = new Person("James", 31);
+const sam = new Person("Sam", 37);
+const latoya = new Person("Latoya", 32);
 
+console.log(james.toString());
+console.log(sam.toString());
+console.log(latoya.toString());
 
+james.eat("pizza");
+james.eat("ramen");
+james.eat("bento");
+james.eat("tacos");
+james.eat("sandwich");
+james.eat("sushi");
+james.eat("cake");
+
+console.log("James stomach", james.stomach);
+console.log(james.poop());
+
+console.log("James stomach after using the bathroom", james.stomach);
 
 /*
   TASK 2
@@ -63,10 +93,7 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-  
-}
-
+function Car() {}
 
 /*
   TASK 3
@@ -75,10 +102,7 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
-}
-
+function Baby() {}
 
 /* 
   TASK 4
@@ -89,18 +113,17 @@ function Baby() {
   4. 
 */
 
-
 ///////// END OF CHALLENGE /////////
 
 /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
-function foo(){
-  console.log('its working!');
-  return 'bar';
+function foo() {
+  console.log("its working!");
+  return "bar";
 }
 foo();
 module.exports = {
   foo,
-  Person, 
+  Person,
   Car,
-  Baby
-}
+  Baby,
+};
